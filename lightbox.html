@@ -83,6 +83,9 @@
 
     //add click event listener to overlay
     overlay.addEventListener(`click`, closeOnClick);
+
+    //add keypress event listener to the body
+    body.addEventListener(`keyup`, closeOnEscape);
   }
 
 
