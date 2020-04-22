@@ -97,6 +97,13 @@
 
   }
 
+
+  function closeOnEscape(event){
+    if(event.key == "Escape"){
+      closeOverlay();
+    }
+  }
+
   function closeOverlay(){
     //grab the overlay again here because of scope
     const overlay = document.querySelector(`#overlay`);
