@@ -50,6 +50,18 @@
   //grab all of the images from the page
   const images = document.querySelectorAll(`.lightbox img`);
 
+
+
+  //attach an event listener to each individual image
+  //param 1 = what to listen for
+  //param 2 = what do fire once heard
+  //DOM API automatically binds image to function, but best practice for clarity to include
+  images.forEach(image =>
+    image.addEventListener(`click`, openOverlay.bind(image))
+  );
+
+
+
   //write function to show the overlay on image click
   //add image to overlay. use 'this' to reference image. outerHTML property grabs the markup for the 'this' object
 
@@ -64,18 +76,6 @@
     //add overlayMarkup to just before the closing body tag
     body.insertAdjacentHTML(`beforeend`, overlayMarkup);
   }
-
-  //attach an event listener to each individual image
-  //param 1 = what to listen for
-  //param 2 = what do fire once heard
-  //DOM API automatically binds image to function, but best practice for clarity to include
-  images.forEach(image =>
-    image.addEventListener(`click`, openOverlay.bind(image))
-  );
-
-
-
-
 
 
 
