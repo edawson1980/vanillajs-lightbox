@@ -37,9 +37,9 @@
   </head>
   <body>
     <section class="lightbox">
-      <img src="images/artem-sapegin-8c6eS43iq1o-unsplash.jpg" alt="Sunset behind mountains from Artem Sapegin via Unsplash">
-      <img src="images/ashley-knedler-OwpgxILRR7c-unsplash.jpg" alt="Antelope Canyon from Ashley Knedler via Unsplash">
-      <img src="images/cristina-gottardi-R4y_E5ZQDPg-unsplash.jpg" alt="Mountains and tress reflecting on lake from Cristina Gottardi via Unsplash">
+      <img src="images/artem-sapegin-8c6eS43iq1o-unsplash.jpg" alt="Sunset behind mountains from Artem Sapegin via Unsplash" />
+      <img src="images/ashley-knedler-OwpgxILRR7c-unsplash.jpg" alt="Antelope Canyon from Ashley Knedler via Unsplash" />
+      <img src="images/cristina-gottardi-R4y_E5ZQDPg-unsplash.jpg" alt="Mountains and tress reflecting on lake from Cristina Gottardi via Unsplash" />
     </section>
 
   </body>
@@ -50,21 +50,30 @@
   //grab all of the images from the page
   const images = document.querySelectorAll(`.lightbox img`);
 
-
   //write function to show the overlay on image click
-  openOverlay = () => {
-    const overlayMarkup = `<div id="overlay"></div>`
+  //add image to overlay. use 'this' to reference image. outerHTML property grabs the markup for the 'this' object
+
+  function openOverlay(){
+    const overlayMarkup = `<div id="overlay">
+      <figure>
+      ${this.outerHTML}
+      <figcaption>${this.alt}</figcaption>
+      </figure>
+    </div>`
 
     //add overlayMarkup to just before the closing body tag
     body.insertAdjacentHTML(`beforeend`, overlayMarkup);
-  };
+  }
 
   //attach an event listener to each individual image
   //param 1 = what to listen for
   //param 2 = what do fire once heard
-  images.forEach(image => {
-    image.addEventListener(`click`, openOverlay)
-  });
+  //DOM API automatically binds image to function, but best practice for clarity to include
+  images.forEach(image =>
+    image.addEventListener(`click`, openOverlay.bind(image))
+  );
+
+
 
 
 
