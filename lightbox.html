@@ -86,6 +86,23 @@
 
     //add keypress event listener to the body
     body.addEventListener(`keyup`, closeOnEscape);
+
+  }
+
+  function closeOnClick(event){
+    //make sure the area being clicked is just the overlay
+    if(event.target.id == "overlay"){
+      closeOverlay();
+    }
+
+  }
+
+  function closeOverlay(){
+    //grab the overlay again here because of scope
+    const overlay = document.querySelector(`#overlay`);
+
+    //overwrite the overlay to be empty
+    overlay.outerHTML = ``;
   }
 
 
