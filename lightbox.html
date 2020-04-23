@@ -76,7 +76,7 @@
     //add overlayMarkup to just before the closing body tag
     body.insertAdjacentHTML(`beforeend`, overlayMarkup);
 
-    //ADD CLOSING FUNCTIONALITY
+
 
     //grab overlay div from the page
     const overlay = document.querySelector(`#overlay`);
@@ -89,6 +89,9 @@
 
   }
 
+  //ADD CLOSING FUNCTIONALITY
+
+  //write function to close on a click to the overlay
   function closeOnClick(event){
     //make sure the area being clicked is just the overlay
     if(event.target.id == "overlay"){
@@ -97,13 +100,15 @@
 
   }
 
-
+//write function to close overlay on Esc
   function closeOnEscape(event){
+    //find event's key by 1) console.log(event) 2) activate overlay in browser 3) press key
     if(event.key == "Escape"){
       closeOverlay();
     }
   }
 
+//write function to wipe the overlay
   function closeOverlay(){
     //grab the overlay again here because of scope
     const overlay = document.querySelector(`#overlay`);
