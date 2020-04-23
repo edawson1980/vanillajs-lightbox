@@ -108,13 +108,16 @@
     }
   }
 
-//write function to wipe the overlay
+//write function to wipe the overlay and remove events
   function closeOverlay(){
     //grab the overlay again here because of scope
     const overlay = document.querySelector(`#overlay`);
 
-    //overwrite the overlay to be empty
+    //overwrite the overlay to be empty (removes click event by virtue of HTML being wiped)
     overlay.outerHTML = ``;
+
+    //remove keypress event b/c otherwise mutiple esc keypresses will be stored im memory, potentially affecting performance
+    body.removeEventListener(`keyup`, closeOnEscape);
   }
 
 
